@@ -36,7 +36,8 @@ net / 30 days = net / day × 30
 break-even    = earned / day ÷ energy / day   [price per kWh at which net is 0]`}
         </pre>
         <p className="text-muted-foreground">
-          The three result cards differ only in the rental price (low, typical and high figures from the sources below). Everything else
+          The three result cards differ only in the rental price: the cheapest, the median and the 90th percentile of the cheapest live
+          Vast.ai offers. These are listed prices at one moment, not what hosts realised. Everything else
           uses the values you enter.
         </p>
       </section>
@@ -47,7 +48,7 @@ break-even    = earned / day ÷ energy / day   [price per kWh at which net is 0]
         <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
           <li>
             <strong className="text-foreground">Utilization, default {pct(assumptions.utilization.typical)}.</strong> Share of hours the GPU
-            is actually rented. Reported ranges for home hosts run from about 50% to 85%; new hosts start lower.
+            is actually rented. No source gives a reliable figure; Vast.ai uses 80% in one example, and new hosts start lower.
           </li>
           <li>
             <strong className="text-foreground">Platform cut, default {pct(assumptions.platformFee.typical)}.</strong> Rental prices are what
@@ -90,7 +91,14 @@ break-even    = earned / day ÷ energy / day   [price per kWh at which net is 0]
 
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Corrections</h2>
-        <p className="text-muted-foreground">None yet.</p>
+        <p className="text-muted-foreground">2026-10-04: all sources were checked against their original pages. Changes:</p>
+        <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+          <li>Italy electricity price corrected from €0.333 to €0.2966 per kWh, and Spain from €0.2872 to €0.2669, to match Eurostat&apos;s data.</li>
+          <li>RTX 4090 rental prices replaced: the earlier $0.25–0.35/hr could not be found on its cited page and was well below live prices. It was replaced with figures from Vast.ai&apos;s own offers.</li>
+                    <li>2026-10-04: rental prices, electricity prices and the EUR/USD rate now refresh automatically every day from Vast.ai, Eurostat, the EIA and the ECB. Rental prices describe the 64 cheapest single-GPU offers Vast.ai&apos;s API returns, and the figures above are replaced by these.</li>
+          <li>Board power now comes from NVIDIA&apos;s own pages. US electricity price updated to July 2026 (18.31 ¢/kWh) and the EUR/USD rate to 1.1225 (2026-10-02).</li>
+          <li>Still not confirmed: RTX 4090 and 5090 idle power (TechPowerUp blocks automated access).</li>
+        </ul>
       </section>
 
       <section className="space-y-4">

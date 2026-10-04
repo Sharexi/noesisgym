@@ -15,6 +15,7 @@ links.
 | `src/lib/model.test.ts` | Tests, including a hand-computed example |
 | `src/data/inputs.ts` | GPU, price and electricity figures, each pointing to a source |
 | `src/data/sources.ts` | Every source with its date and verification status |
+| `src/data/live.json` | Figures refreshed daily by `.github/workflows/update-data.yml` (`node scripts/update-data.mjs`) |
 
 ## Develop
 
