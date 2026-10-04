@@ -1,0 +1,12 @@
+# noesisgym
+
+> What a home GPU (RTX 3090, 4090, 5090) really nets from rental marketplaces, after platform cut, electricity and idle time. Every number is sourced, dated and adjustable. Estimates for information only, not financial advice. No affiliate links.
+
+## Pages
+
+- [GPU earnings calculator](https://noesisgym.com/): net earnings per 30 days at low, typical and high rental prices, for your electricity price and utilization.
+- [Methodology](https://noesisgym.com/methodology/): formulas, assumptions, what is not included, and every source with its date and verification status.
+
+## Source code and data
+
+- [GitHub repository](https://github.com/sharexi/noesisgym): the calculation model, its tests, and all input figures with sources.
