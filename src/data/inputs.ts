@@ -30,33 +30,33 @@ export const gpus: Gpu[] = [
   {
     id: "rtx-3090",
     name: "RTX 3090",
-    loadWatts: { value: 350, source: "rtx3090Power" },
-    idleWatts: { value: 18, source: "rtx3090Power" },
+    loadWatts: { value: 350, source: "nvidiaRtx3090" },
+    idleWatts: { value: 18, source: "rtx3090IdlePower" },
     rentalUsdPerHour: {
-      low: { value: 0.131, source: "rtx3090Prices" },
-      typical: { value: 0.2, source: "rtx3090Prices", derivation: "Midpoint of the low and high figures, rounded." },
+      low: { value: 0.108, source: "llmhosting3090" },
+      typical: { value: 0.177, source: "llmhosting3090" },
       high: { value: 0.27, source: "rtx3090PricesHigh" },
     },
   },
   {
     id: "rtx-4090",
     name: "RTX 4090",
-    loadWatts: { value: 450, source: "rtx4090Power" },
+    loadWatts: { value: 450, source: "nvidiaRtx4090" },
     idleWatts: { value: 22, source: "idlePowerTpu" },
     rentalUsdPerHour: {
-      low: { value: 0.14, source: "rtx4090PricesLow" },
-      typical: { value: 0.25, source: "rtx4090HostEarnings" },
-      high: { value: 0.35, source: "rtx4090HostEarnings" },
+      low: { value: 0.27, source: "llmhosting4090" },
+      typical: { value: 0.477, source: "llmhosting4090" },
+      high: { value: 0.52, source: "rtx4090PricesHigh" },
     },
   },
   {
     id: "rtx-5090",
     name: "RTX 5090",
-    loadWatts: { value: 575, source: "rtx5090Power" },
+    loadWatts: { value: 575, source: "nvidiaRtx5090" },
     idleWatts: { value: 30, source: "idlePowerTpu" },
     rentalUsdPerHour: {
-      low: { value: 0.268, source: "rtx5090Prices" },
-      typical: { value: 0.537, source: "rtx5090Prices" },
+      low: { value: 0.404, source: "llmhosting5090" },
+      typical: { value: 0.536, source: "llmhosting5090" },
       high: { value: 0.6, source: "vastHostEarnings" },
     },
   },
@@ -73,13 +73,13 @@ export interface ElectricityPreset {
 export const electricityPresets: ElectricityPreset[] = [
   { id: "eu", name: "EU average", pricePerKwh: { value: 0.2896, source: "eurostatH2_2025" }, currency: "EUR" },
   { id: "de", name: "Germany", pricePerKwh: { value: 0.3869, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "it", name: "Italy", pricePerKwh: { value: 0.333, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "es", name: "Spain", pricePerKwh: { value: 0.2872, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "us", name: "United States", pricePerKwh: { value: 0.1883, source: "eiaResidential" }, currency: "USD" },
+  { id: "it", name: "Italy", pricePerKwh: { value: 0.2966, source: "eurostatH2_2025" }, currency: "EUR" },
+  { id: "es", name: "Spain", pricePerKwh: { value: 0.2669, source: "eurostatH2_2025" }, currency: "EUR" },
+  { id: "us", name: "United States", pricePerKwh: { value: 0.1831, source: "eiaResidential" }, currency: "USD" },
 ];
 
 /** USD per 1 EUR. */
-export const eurUsd: Sourced = { value: 1.1355, source: "ecbEurUsd" };
+export const eurUsd: Sourced = { value: 1.1225, source: "ecbEurUsd" };
 
 /**
  * Assumptions we could not source to a single figure. Shown as such on the
