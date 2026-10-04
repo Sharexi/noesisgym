@@ -1,3 +1,4 @@
+import live from "./live.json";
 import type { SourceId } from "./sources";
 
 /** A number with where it came from. */
@@ -33,9 +34,9 @@ export const gpus: Gpu[] = [
     loadWatts: { value: 350, source: "nvidiaRtx3090" },
     idleWatts: { value: 18, source: "rtx3090IdlePower" },
     rentalUsdPerHour: {
-      low: { value: 0.108, source: "llmhosting3090" },
-      typical: { value: 0.177, source: "llmhosting3090" },
-      high: { value: 0.27, source: "rtx3090PricesHigh" },
+      low: { value: live.rental["rtx-3090"].low, source: "vastRtx3090" },
+      typical: { value: live.rental["rtx-3090"].typical, source: "vastRtx3090" },
+      high: { value: live.rental["rtx-3090"].high, source: "vastRtx3090" },
     },
   },
   {
@@ -44,9 +45,9 @@ export const gpus: Gpu[] = [
     loadWatts: { value: 450, source: "nvidiaRtx4090" },
     idleWatts: { value: 22, source: "idlePowerTpu" },
     rentalUsdPerHour: {
-      low: { value: 0.27, source: "llmhosting4090" },
-      typical: { value: 0.477, source: "llmhosting4090" },
-      high: { value: 0.52, source: "rtx4090PricesHigh" },
+      low: { value: live.rental["rtx-4090"].low, source: "vastRtx4090" },
+      typical: { value: live.rental["rtx-4090"].typical, source: "vastRtx4090" },
+      high: { value: live.rental["rtx-4090"].high, source: "vastRtx4090" },
     },
   },
   {
@@ -55,9 +56,9 @@ export const gpus: Gpu[] = [
     loadWatts: { value: 575, source: "nvidiaRtx5090" },
     idleWatts: { value: 30, source: "idlePowerTpu" },
     rentalUsdPerHour: {
-      low: { value: 0.404, source: "llmhosting5090" },
-      typical: { value: 0.536, source: "llmhosting5090" },
-      high: { value: 0.6, source: "vastHostEarnings" },
+      low: { value: live.rental["rtx-5090"].low, source: "vastRtx5090" },
+      typical: { value: live.rental["rtx-5090"].typical, source: "vastRtx5090" },
+      high: { value: live.rental["rtx-5090"].high, source: "vastRtx5090" },
     },
   },
 ];
@@ -71,15 +72,15 @@ export interface ElectricityPreset {
 }
 
 export const electricityPresets: ElectricityPreset[] = [
-  { id: "eu", name: "EU average", pricePerKwh: { value: 0.2896, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "de", name: "Germany", pricePerKwh: { value: 0.3869, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "it", name: "Italy", pricePerKwh: { value: 0.2966, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "es", name: "Spain", pricePerKwh: { value: 0.2669, source: "eurostatH2_2025" }, currency: "EUR" },
-  { id: "us", name: "United States", pricePerKwh: { value: 0.1831, source: "eiaResidential" }, currency: "USD" },
+  { id: "eu", name: "EU average", pricePerKwh: { value: live.electricity.eu.value, source: "eurostatHouseholds" }, currency: "EUR" },
+  { id: "de", name: "Germany", pricePerKwh: { value: live.electricity.de.value, source: "eurostatHouseholds" }, currency: "EUR" },
+  { id: "it", name: "Italy", pricePerKwh: { value: live.electricity.it.value, source: "eurostatHouseholds" }, currency: "EUR" },
+  { id: "es", name: "Spain", pricePerKwh: { value: live.electricity.es.value, source: "eurostatHouseholds" }, currency: "EUR" },
+  { id: "us", name: "United States", pricePerKwh: { value: live.electricity.us.value, source: "eiaResidential" }, currency: "USD" },
 ];
 
 /** USD per 1 EUR. */
-export const eurUsd: Sourced = { value: 1.1225, source: "ecbEurUsd" };
+export const eurUsd: Sourced = { value: live.eurUsd.value, source: "ecbEurUsd" };
 
 /**
  * Assumptions we could not source to a single figure. Shown as such on the

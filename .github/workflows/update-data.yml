@@ -1,0 +1,47 @@
+# Refreshes src/data/live.json (rental prices, electricity prices, EUR/USD) from
+# the original sources and commits it to main. Cloudflare rebuilds the site on
+# that commit. If a source breaks, the others still update and this run fails.
+name: Update data
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Fetch fresh figures
+        id: fetch
+        run: node scripts/update-data.mjs
+        continue-on-error: true
+      - name: Check the site still builds
+        run: npm test && npm run typecheck && npm run build
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- src/data/live.json; then
+            echo "No changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add src/data/live.json
+            git commit -m "Refresh live data"
+            git push origin main
+          fi
+      - name: Fail if a source could not be read
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "At least one source failed; see the 'Fetch fresh figures' step."
+          exit 1
