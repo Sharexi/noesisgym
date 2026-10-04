@@ -27,6 +27,12 @@ npm run typecheck
 npm run build      # static site in out/
 ```
 
+## Deploy
+
+Served from Cloudflare Workers static assets (`wrangler.jsonc`). Cloudflare
+builds each push to `main` with `npm run build` and deploys with
+`npx wrangler deploy`.
+
 ## Corrections
 
 Found a wrong or outdated number? Open an issue with a link to a better
