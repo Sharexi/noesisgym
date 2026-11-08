@@ -1,25 +1,25 @@
 {
   "rental": {
     "rtx-3090": {
-      "low": 0.093,
+      "low": 0.099,
       "typical": 0.2,
-      "high": 0.267,
+      "high": 0.28,
       "offers": 64,
-      "asOf": "2026-11-07"
+      "asOf": "2026-11-08"
     },
     "rtx-4090": {
-      "low": 0.134,
-      "typical": 0.453,
-      "high": 0.512,
+      "low": 0.133,
+      "typical": 0.427,
+      "high": 0.467,
       "offers": 64,
-      "asOf": "2026-11-07"
+      "asOf": "2026-11-08"
     },
     "rtx-5090": {
       "low": 0.211,
-      "typical": 0.627,
-      "high": 0.8,
+      "typical": 0.6,
+      "high": 0.849,
       "offers": 64,
-      "asOf": "2026-10-18"
+      "asOf": "2026-11-08"
     }
   },
   "electricity": {
